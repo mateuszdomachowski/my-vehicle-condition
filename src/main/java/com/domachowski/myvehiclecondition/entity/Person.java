@@ -1,8 +1,18 @@
 package com.domachowski.myvehiclecondition.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "person")
 public class Person {
 
@@ -16,4 +26,13 @@ public class Person {
     private String last_name;
     @Column(name = "email")
     private String email;
+    @Transient
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", targetEntity = com.domachowski.myvehiclecondition.entity.Vehicle.class)
+    private List<Vehicle> vehicles;
+
+    public Person(String first_name, String last_name, String email) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+    }
 }

@@ -1,18 +1,28 @@
 package com.domachowski.myvehiclecondition.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "vehicle")
 public class Vehicle {
 
+    @Id
     @Column(name = "vehicle_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long vehicleId;
-    @Column(name = "person_id")
-    @ManyToOne
-    @JoinColumn(name = "person_id", referencedColumnName = "person_id")
-    private Long personId;
+//    @ManyToOne
+//    @JoinColumn(name = "person_id", referencedColumnName = "person_id")
+//    private Long personId;
     @Column(name = "brand")
     private String brand;
     @Column(name = "model")
@@ -23,4 +33,7 @@ public class Vehicle {
     private String mileage;
     @Column(name = "what_was_made")
     private String whatWasMade;
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = com.domachowski.myvehiclecondition.entity.Person.class)
+    @JoinColumn(name = "person_id", referencedColumnName = "person_id")
+    private Person person;
 }

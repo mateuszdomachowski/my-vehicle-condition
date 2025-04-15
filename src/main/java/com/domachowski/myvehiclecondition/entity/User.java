@@ -11,25 +11,22 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "vehicle")
-public class Vehicle {
+@Table(name = "user", schema = "public")
+public class User {
 
     @Id
     private Long id;
 
     @Column(name = "person_id")
-    private Long personId;
+    private String personId;
 
-    @Column(name = "brand")
-    private String brand;
+    @Column(name = "first_name")
+    private String first_name;
 
-    @Column(name = "model")
-    private String model;
+    @Column(name = "last_name")
+    private String last_name;
 
-    @Column(name = "mileage")
-    private String mileage;
-
-    @Column(name = "what_was_made")
-    private String whatWasMade;
+    @Column(name = "email")
+    private String email;
 
 }

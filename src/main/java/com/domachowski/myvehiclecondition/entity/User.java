@@ -17,8 +17,8 @@ public class User {
     @Id
     private Long id;
 
-    @Column(name = "person_id")
-    private String personId;
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "first_name")
     private String first_name;
@@ -26,7 +26,8 @@ public class User {
     @Column(name = "last_name")
     private String last_name;
 
-    @Column(name = "email")
-    private String email;
 
+    public String getEmail() {
+        return email;
+    }
 }

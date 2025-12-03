@@ -6,19 +6,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigInteger;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "vehicle")
+@Table(name = "vehicles")
 public class Vehicle {
 
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private BigInteger id;
 
-    @Column(name = "person_id")
-    private Long personId;
+    @Column(name = "user_id")
+    private Long userId;
 
     @Column(name = "brand")
     private String brand;
